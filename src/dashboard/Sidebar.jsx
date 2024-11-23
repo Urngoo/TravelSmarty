@@ -1,4 +1,7 @@
 import React from 'react';
+import { Button } from 'antd';
+import { TeamOutlined } from '@ant-design/icons';
+import { CloudOutlined } from '@ant-design/icons';
 
 const SideBar = () => {
   return (
@@ -24,7 +27,27 @@ const SideBar = () => {
               Integration
             </a></li>
           </ul>
-          <div className='text-gray-400 text-bold flex justify-start rounded  px-2 py-2'>Current View</div>
+          <div>
+            <div className='text-gray-400 text-bold flex justify-start rounded px-2 py-2'>Current View</div>
+            <div className='mt-4'>
+              <div className='flex justify-center'>
+              <Button type="default" className='flex flex-col justify-center text-gray-500 border-gray-400 w-full mb-2 py-10'>
+              <TeamOutlined className="text-3xl text-gray-500 "/>
+                <div>Primary Button</div>
+              </Button>
+              </div>
+              <div className='flex flex-row gap-2'>
+                <Button type="default" className='flex flex-col items-center text-gray-500 border-gray-400 w-full py-10'>
+                <CloudOutlined className="text-3xl text-gray-500" />
+                <div>Weather</div>
+                </Button>
+                <Button type="default" className='flex flex-col items-center text-gray-500 border-gray-400 w-full py-10'>
+                <CloudOutlined className="text-3xl text-gray-500 hover:text-blue-400" />
+                <div>Weather</div>
+                </Button>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   );
