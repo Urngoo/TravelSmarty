@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import SideBar from "./dashboard/Sidebar";
-import { DatePicker } from 'antd';
 import ToggleSwitch from "./dashboard/toggle";
+import CardComponent from "./dashboard/card";
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <DatePicker/>
+      <CardComponent />
       <ToggleSwitch />
       <SideBar/>
     </>
