@@ -1,16 +1,25 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import SideBar from "./dashboard/Sidebar";
+import Calendar from "./Pages/Calendar";
+import Dashboard from "./Pages/Dashboard";
+import Inbox from "./Pages/Inbox";
+import Integration from "./Pages/Integration";
+import Map from "./Pages/Map";
 
 function App() {
-  const [count, setCount] = useState(0);//test hiiv
+  const [count, setCount] = useState(0); //test hiiv
 
   return (
-    <>
-      <SideBar/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/integration" element={<Integration />} />
+        <Route path="/inbox" element={<Inbox />} />
+        <Route path="/map" element={<Map />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
