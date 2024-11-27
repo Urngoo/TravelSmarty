@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
+import AddEvent from "./component/event";
 import SideBar from "./dashboard/Sidebar";
-import ToggleSwitch from "./dashboard/toggle";
-import CardComponent from "./dashboard/card";
-import AddEvent from "./dashboard/event";
+import Flight from "./component/flight";
+
 
 
 function App() {
@@ -11,10 +11,9 @@ function App() {
 
   return (
     <>
-      <AddEvent/>
-      {/* <CardComponent />
-      <ToggleSwitch />
-      <SideBar/> */}
+      {/* <AddEvent />
+      <SideBar /> */}
+      <Flight />
     </>
   );
 }
