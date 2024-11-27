@@ -3,6 +3,7 @@ import "./App.css";
 import SideBar from "./dashboard/Sidebar";
 import ToggleSwitch from "./dashboard/toggle";
 import CardComponent from "./dashboard/card";
+import AddEvent from "./dashboard/event";
 
 
 function App() {
@@ -10,9 +11,10 @@ function App() {
 
   return (
     <>
-      <CardComponent />
+      <AddEvent/>
+      {/* <CardComponent />
       <ToggleSwitch />
-      <SideBar/>
+      <SideBar/> */}
     </>
   );
 }
