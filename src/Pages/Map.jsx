@@ -1,7 +1,12 @@
 import React from "react";
+import PageLayout from "../PageLayout";
 
 const Map = () => {
-  return <div>Map</div>;
+  return (
+    <PageLayout>
+      <div> Map</div>
+    </PageLayout>
+  );
 };
 
 export default Map;

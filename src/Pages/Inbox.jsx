@@ -1,7 +1,12 @@
 import React from "react";
+import PageLayout from "../PageLayout";
 
 const Inbox = () => {
-  return <div>Inbox</div>;
+  return (
+    <PageLayout>
+      <div>Inbox</div>
+    </PageLayout>
+  );
 };
 
 export default Inbox;
