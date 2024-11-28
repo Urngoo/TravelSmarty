@@ -1,7 +1,12 @@
 import React from "react";
+import PageLayout from "../PageLayout";
 
 const Calendar = () => {
-  return <div>Calendar</div>;
+  return (
+    <PageLayout>
+      <div>Calendar</div>
+    </PageLayout>
+  );
 };
 
 export default Calendar;

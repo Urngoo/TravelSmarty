@@ -13,7 +13,8 @@
     "@ant-design/icons": "^5.5.1",
     "antd": "^5.22.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-page-layout": "^0.9.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
