@@ -10,7 +10,7 @@ function Dashboard() {
   return (
     <>
       <PageLayout>
-        <Navbar />
+        {/* <Navbar /> */}
         <ToggleSwitch />
         <WeatherCard />
       </PageLayout>

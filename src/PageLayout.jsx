@@ -5,8 +5,8 @@ const PageLayout = ({ children }) => {
   return (
     <>
       <SideBar />
-      {children}
       <Navbar />
+      {children}
     </>
   );
 };
