@@ -25,9 +25,15 @@ export default function Navbar() {
           {isDateOpen && (
             <div className="absolute left-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow">
               <ul>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">July 16</li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">July 17</li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">July 18</li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  July 16
+                </li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  July 17
+                </li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  July 18
+                </li>
               </ul>
             </div>
           )}
@@ -48,9 +54,15 @@ export default function Navbar() {
           {isTimeZoneOpen && (
             <div className="absolute left-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow">
               <ul>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">Indian TimeZone</li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">American TimeZone</li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">Other TimeZone</li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  Indian TimeZone
+                </li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  American TimeZone
+                </li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  Other TimeZone
+                </li>
               </ul>
             </div>
           )}
@@ -77,9 +89,15 @@ export default function Navbar() {
           {isWeekOpen && (
             <div className="absolute right-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow">
               <ul>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">This week</li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">Next week</li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">Last week</li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  This week
+                </li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  Next week
+                </li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  Last week
+                </li>
               </ul>
             </div>
           )}
