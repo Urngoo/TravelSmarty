@@ -15,9 +15,9 @@ import {
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(false); // State for collapsing/expanding the sidebar
 
-  const toggleSidebar = () => setCollapsed(!collapsed);
+  const toggleSidebar = () => setCollapsed(!collapsed); // Function to toggle the sidebar state
 
   return (
     <div className="flex">
