@@ -7,20 +7,26 @@ import Inbox from "./Pages/Inbox";
 import Integration from "./Pages/Integration";
 import Map from "./Pages/Map";
 import Flight from "./component/flight";
+import SideBar from "./components/Sidebar";
 
 function App() {
-  const [count, setCount] = useState(0); //test hiiv
+  const [count, setCount] = useState(0);
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/calendar" element={<Calendar />} />
-        <Route path="/integration" element={<Integration />} />
-        <Route path="/inbox" element={<Inbox />} />
-        <Route path="/map" element={<Map />} />
-        <Route path="/flight" element={<Flight />} />
-      </Routes>
+      <div className="flex">
+        <SideBar />
+        <div className="w-full">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/integration" element={<Integration />} />
+            <Route path="/inbox" element={<Inbox />} />
+            <Route path="/map" element={<Map />} />
+            <Route path="/flight" element={<Flight />} />
+          </Routes>
+        </div>
+      </div>
     </BrowserRouter>
   );
 }
