@@ -11,11 +11,6 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
 
-
-
-
-
-
 const AddEvent = () => {
   const [meetingHeading, setMeetingHeading] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
