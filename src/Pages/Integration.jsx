@@ -1,10 +1,13 @@
 import React from "react";
 import PageLayout from "../PageLayout";
+import Navbar from "../components/Navbar";
+import Integrations from "../component/IntCard";
 
 const Integration = () => {
   return (
     <PageLayout>
-      <div>Integration</div>
+      <Navbar />
+      <Integrations />
     </PageLayout>
   );
 };

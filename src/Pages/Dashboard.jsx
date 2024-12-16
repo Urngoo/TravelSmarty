@@ -8,7 +8,6 @@ function Dashboard() {
     <>
       <PageLayout>
         <Navbar />
-        <ToggleSwitch />
         <WeatherCard />
       </PageLayout>
     </>
