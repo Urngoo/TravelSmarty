@@ -1,16 +1,16 @@
-import { useState } from "react";
-import SideBar from "../components/Sidebar";
 import WeatherCard from "../dashboard/WeatherCard";
-import ToggleSwitch from "../dashboard/ToggleSwitch";
+import PageLayout from "../PageLayout";
+import Navbar from "../components/Navbar";
+import Event from "../components/event";
 
 function Dashboard() {
-  const [count, setCount] = useState(0); //test hiiv
-
   return (
     <>
-      <ToggleSwitch />
-      <WeatherCard />
-      <SideBar />
+      <PageLayout>
+        <Navbar />
+        <Event />
+        <WeatherCard />
+      </PageLayout>
     </>
   );
 }
