@@ -1,10 +1,14 @@
 import React from "react";
 import PageLayout from "../PageLayout";
+import Navbar from "../components/Navbar";
 
 const Inbox = () => {
   return (
     <PageLayout>
-      <div>Inbox</div>
+      <div>
+        <Navbar />
+        Inbox
+      </div>
     </PageLayout>
   );
 };

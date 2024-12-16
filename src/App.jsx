@@ -22,7 +22,7 @@ function App() {
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/integration" element={<Integration />} />
             <Route path="/inbox" element={<Inbox />} />
-            <Route path="/map" element={<Map />} />
+            <Route path="/Map" element={<Map />} />
             <Route path="/flight" element={<Flight />} />
           </Routes>
         </div>

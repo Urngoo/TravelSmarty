@@ -1,6 +1,7 @@
 import React from "react";
 import PageLayout from "../PageLayout";
 import { Calendar, Badge, Tag } from "antd";
+import Navbar from "../components/Navbar";
 
 const meetingData = {
   "2024-12-04": [
@@ -47,6 +48,7 @@ const dateCellRender = (date) => {
 const Cal = () => {
   return (
     <PageLayout>
+      <Navbar />
       <Calendar
         dateCellRender={dateCellRender}
         style={{ width: "100%", margin: "auto" }}

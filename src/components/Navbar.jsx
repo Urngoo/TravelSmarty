@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isTimeZoneOpen, setIsTimeZoneOpen] = useState(false); // Toggle for "TimeZone" dropdown
 
   return (
-    <div className="flex items-center justify-between p-2  rounded-lg bg-white h-8">
+    <div className="flex items-center justify-between p-2 rounded-lg bg-white h-8">
       {/* Left section */}
       <div className="flex items-center gap-3">
         <button className="h-full px-4 border rounded-lg flex items-center">

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import WeatherCard from "../dashboard/WeatherCard";
-import ToggleSwitch from "../dashboard/ToggleSwitch";
 import PageLayout from "../PageLayout";
 import Navbar from "../components/Navbar";
+import Event from "../component/event";
 
 function Dashboard() {
   const [count, setCount] = useState(0); //test hiiv
@@ -11,7 +11,7 @@ function Dashboard() {
     <>
       <PageLayout>
         <Navbar />
-        <ToggleSwitch />
+        <Event />
         <WeatherCard />
       </PageLayout>
     </>

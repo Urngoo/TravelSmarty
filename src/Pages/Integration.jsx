@@ -1,10 +1,14 @@
 import React from "react";
 import PageLayout from "../PageLayout";
+import Navbar from "../components/Navbar";
 
 const Integration = () => {
   return (
     <PageLayout>
-      <div>Integration</div>
+      <div>
+        <Navbar />
+        Integration
+      </div>
     </PageLayout>
   );
 };
