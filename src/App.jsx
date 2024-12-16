@@ -6,7 +6,7 @@ import Dashboard from "./Pages/Dashboard";
 import Inbox from "./Pages/Inbox";
 import Integration from "./Pages/Integration";
 import Map from "./Pages/Map";
-import Flight from "./component/flight";
+import Flight from "./components/flight";
 import SideBar from "./components/Sidebar";
 
 function App() {
