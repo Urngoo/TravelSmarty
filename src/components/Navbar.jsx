@@ -1,55 +1,46 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 import { SlArrowLeft, SlArrowRight, SlArrowDown } from "react-icons/sl";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Navbar() {
-  const [isDateOpen, setIsDateOpen] = useState(false); // Toggle for "July 17" dropdown
   const [isWeekOpen, setIsWeekOpen] = useState(false); // Toggle for "This week" dropdown
   const [isTimeZoneOpen, setIsTimeZoneOpen] = useState(false); // Toggle for "TimeZone" dropdown
+  const [selectedDate, setSelectedDate] = useState(new Date()); // Calendar state
 
   return (
-    <div className="flex items-center justify-between p-2 rounded-lg bg-white h-8">
+    <div className="flex items-center justify-between px-4 py-2 bg-white rounded-lg mx-8">
       {/* Left section */}
       <div className="flex items-center gap-3">
-        <button className="h-full px-4 border rounded-lg flex items-center">
+        <button className="px-3 py-1 border rounded-full flex items-center text-sm">
           Today
         </button>
 
-        {/* Date dropdown */}
+        {/* Date calendar */}
         <div className="relative">
-          <button
-            className="h-full px-4 border rounded-lg flex items-center gap-1"
-            onClick={() => setIsDateOpen(!isDateOpen)}
-          >
-            July 17 <SlArrowDown />
-          </button>
-          {isDateOpen && (
-            <div className="absolute left-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow">
-              <ul>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                  July 16
-                </li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                  July 17
-                </li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                  July 18
-                </li>
-              </ul>
-            </div>
-          )}
+          <div className="px-3 py-1 border rounded-full flex items-center gap-1 text-sm cursor-pointer">
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              dateFormat="MMMM d"
+              className="w-full bg-transparent focus:outline-none"
+              popperPlacement="bottom-start"
+            />
+            <SlArrowDown />
+          </div>
         </div>
 
-        <span className="h-full px-4 text-red-500 border rounded-lg flex items-center">
+        <span className="px-3 py-1 text-red-500 border rounded-full flex items-center text-sm">
           ● 7:10 PM IST
         </span>
 
         {/* TimeZone dropdown */}
         <div className="relative">
           <button
-            className="h-full px-4 border rounded-lg flex items-center gap-1"
+            className="px-3 py-1 border rounded-full flex items-center gap-1 text-sm"
             onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
           >
-            TimeZone <SlArrowDown />
+            Indian TimeZone <SlArrowDown />
           </button>
           {isTimeZoneOpen && (
             <div className="absolute left-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow">
@@ -71,17 +62,17 @@ export default function Navbar() {
 
       {/* Right section */}
       <div className="flex items-center gap-3">
-        <button className="h-7 p-2 border rounded-lg flex items-center">
+        <button className="w-8 h-8 p-1 border rounded-full flex items-center justify-center">
           <SlArrowLeft />
         </button>
-        <button className="h-7 p-2 border rounded-lg flex items-center">
+        <button className="w-8 h-8 p-1 border rounded-full flex items-center justify-center">
           <SlArrowRight />
         </button>
 
         {/* Week dropdown */}
         <div className="relative">
           <button
-            className="h-full px-4 border rounded-lg flex items-center gap-1"
+            className="px-3 py-1 border rounded-full flex items-center gap-1 text-sm"
             onClick={() => setIsWeekOpen(!isWeekOpen)}
           >
             This week <SlArrowDown />
@@ -103,7 +94,7 @@ export default function Navbar() {
           )}
         </div>
 
-        <button className="h-full px-4 text-white bg-blue-500 rounded-lg flex items-center">
+        <button className="px-4 py-1 text-sm text-white bg-purple-600 rounded-full flex items-center">
           + Add event
         </button>
       </div>
