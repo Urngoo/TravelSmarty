@@ -78,7 +78,7 @@ const Integration = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-6 ml-5">
         <div className="flex flex-row mb-8 justify-between items-center">
           <h1 className="text-3xl font-extrabold text-gray-800">
             Customize Integrations
