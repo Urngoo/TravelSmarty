@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import {
   TeamOutlined,
@@ -15,9 +15,23 @@ import {
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
-  const [collapsed, setCollapsed] = useState(false); // State for collapsing/expanding the sidebar
+  const [collapsed, setCollapsed] = useState(false);
 
-  const toggleSidebar = () => setCollapsed(!collapsed); // Function to toggle the sidebar state
+  // zai baga bval sidebar haa
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setCollapsed(true);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const toggleSidebar = () => setCollapsed(!collapsed);
 
   return (
     <div className="flex">
