@@ -28,7 +28,7 @@ export default function Navbar() {
       setCurrentTime(formatter.format(now));
     }, 1000);
 
-    return () => clearInterval(timer); 
+    return () => clearInterval(timer);
   }, [selectedTimeZone]);
 
   return (
@@ -70,7 +70,7 @@ export default function Navbar() {
           <button
             className="h-10 px-4 border rounded-lg flex items-center gap-1"
             onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
-          > 
+          >
             {timeZones.find((tz) => tz.value === selectedTimeZone)?.label}{" "}
             <SlArrowDown />
           </button>
@@ -116,10 +116,10 @@ export default function Navbar() {
             className="h-10 px-4 border rounded-lg flex items-center gap-1"
             onClick={() => setIsWeekOpen(!isWeekOpen)}
           >
-            This week <SlArrowDown />
+            This week <SlArrowDown className="w-3 h-3" />
           </button>
           {isWeekOpen && (
-            <div className="absolute right-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow">
+            <div className="absolute right-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow-md">
               <ul>
                 <li className="p-2 hover:bg-gray-100 cursor-pointer">
                   This week
