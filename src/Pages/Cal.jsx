@@ -15,6 +15,7 @@ import {
   Space,
 } from "antd";
 import Navbar from "../components/Navbar";
+import Weather from "../components/Weather";
 
 const initialMeetingData = {
   "2024-12-04": [
@@ -199,23 +200,32 @@ const Cal = () => {
     <PageLayout>
       <Navbar />
       <div style={{ padding: "20px" }}>
-        <Space style={{ marginBottom: 16 }}>
-          <Button type="primary" onClick={showModal}>
-            Add Event
-          </Button>
-          <Button
-            type={activeTab === "calendar" ? "primary" : "default"}
-            onClick={() => setActiveTab("calendar")}
-          >
-            Calendar View
-          </Button>
-          <Button
-            type={activeTab === "list" ? "primary" : "default"}
-            onClick={() => setActiveTab("list")}
-          >
-            List View
-          </Button>
-        </Space>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+          }}
+        >
+          <Space style={{ marginBottom: 16 }}>
+            <Button type="primary" onClick={showModal}>
+              Add Event
+            </Button>
+            <Button
+              type={activeTab === "calendar" ? "primary" : "default"}
+              onClick={() => setActiveTab("calendar")}
+            >
+              Calendar View
+            </Button>
+            <Button
+              type={activeTab === "list" ? "primary" : "default"}
+              onClick={() => setActiveTab("list")}
+            >
+              List View
+            </Button>
+          </Space>
+          <Weather />
+        </div>
 
         {activeTab === "calendar" ? (
           <Calendar
