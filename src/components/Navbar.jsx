@@ -9,7 +9,7 @@ export default function Navbar() {
   const [selectedDate, setSelectedDate] = useState(new Date()); // Calendar state
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 bg-white rounded-lg mx-8">
+    <div className="flex items-center justify-between py-2 bg-white rounded-lg mx-5">
       {/* Left section */}
       <div className="flex items-center gap-3">
         {/* Today button */}
