@@ -12,6 +12,7 @@ export default function Navbar() {
     <div className="flex items-center justify-between px-4 py-2 bg-white rounded-lg mx-8">
       {/* Left section */}
       <div className="flex items-center gap-3">
+        {/* Today button */}
         <button className="px-3 py-1 border rounded-full flex items-center text-sm">
           Today
         </button>
@@ -26,32 +27,35 @@ export default function Navbar() {
               className="w-full bg-transparent focus:outline-none"
               popperPlacement="bottom-start"
             />
-            <SlArrowDown />
+            <SlArrowDown className="w-3 h-3" />
           </div>
         </div>
 
-        <span className="px-3 py-1 text-red-500 border rounded-full flex items-center text-sm">
+        {/* Time Display */}
+        <span className="px-2 py-0.5 text-xs font-medium text-red-500 border rounded-full flex items-center justify-center leading-none">
           ● 7:10 PM IST
         </span>
 
         {/* TimeZone dropdown */}
         <div className="relative">
           <button
-            className="px-3 py-1 border rounded-full flex items-center gap-1 text-sm"
+            className="px-2 py-0.5 text-xs font-medium border rounded-full flex items-center gap-1 leading-none"
             onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
           >
-            Indian TimeZone <SlArrowDown />
+            <span>Indian TimeZone</span>
+            <SlArrowDown className="w-3 h-3" />
           </button>
+
           {isTimeZoneOpen && (
-            <div className="absolute left-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow">
+            <div className="absolute left-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow-md">
               <ul>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                <li className="p-2 text-sm hover:bg-gray-100 cursor-pointer">
                   Indian TimeZone
                 </li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                <li className="p-2 text-sm hover:bg-gray-100 cursor-pointer">
                   American TimeZone
                 </li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                <li className="p-2 text-sm hover:bg-gray-100 cursor-pointer">
                   Other TimeZone
                 </li>
               </ul>
@@ -75,10 +79,10 @@ export default function Navbar() {
             className="px-3 py-1 border rounded-full flex items-center gap-1 text-sm"
             onClick={() => setIsWeekOpen(!isWeekOpen)}
           >
-            This week <SlArrowDown />
+            This week <SlArrowDown className="w-3 h-3" />
           </button>
           {isWeekOpen && (
-            <div className="absolute right-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow">
+            <div className="absolute right-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow-md">
               <ul>
                 <li className="p-2 hover:bg-gray-100 cursor-pointer">
                   This week
@@ -94,10 +98,12 @@ export default function Navbar() {
           )}
         </div>
 
-        <button className="px-4 py-1 text-sm text-white bg-purple-600 rounded-full flex items-center">
+        {/* Add event button */}
+        <button className="px-4 py-1 text-xs font-medium text-white bg-purple-600 rounded-full flex items-center">
           + Add event
         </button>
       </div>
     </div>
   );
 }
+
