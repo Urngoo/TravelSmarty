@@ -13,7 +13,7 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../App.css"; 
 
 const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -173,9 +173,7 @@ const SideBar = () => {
 
       {/* Content Area */}
       <div
-        className={`ml-${
-          collapsed ? "16" : "64"
-        } w-full transition-all duration-300 overflow-y-auto custom-scrollbar`}
+        className={`ml-${collapsed ? "16" : "64"} w-full transition-all duration-300 overflow-y-auto custom-scrollbar`}
       >
         {/* Place your content here */}
       </div>

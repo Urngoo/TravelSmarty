@@ -13,7 +13,7 @@
 }
 
 body {
-  overflow: -moz-scrollbars-none;
+  overflow: -moz-scrollbars-none; /* For Firefox */
 }
 
 /* Custom scrollbar class for elements */
@@ -26,6 +26,6 @@ body {
 }
 
 .custom-scrollbar {
-  -ms-overflow-style: none; /* Hide scrollbar Edge */
-  scrollbar-width: none;
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
