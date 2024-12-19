@@ -1,10 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SlArrowLeft, SlArrowRight, SlArrowDown } from "react-icons/sl";
 
 export default function Navbar() {
   const [isDateOpen, setIsDateOpen] = useState(false); // Toggle for "July 17" dropdown
   const [isWeekOpen, setIsWeekOpen] = useState(false); // Toggle for "This week" dropdown
   const [isTimeZoneOpen, setIsTimeZoneOpen] = useState(false); // Toggle for "TimeZone" dropdown
+  const [selectedTimeZone, setSelectedTimeZone] = useState("Asia/Ulaanbaatar"); // Default to Mongolian Time Zone
+  const [currentTime, setCurrentTime] = useState("");
+
+  const timeZones = [
+    { label: "Mongolian Time", value: "Asia/Ulaanbaatar" },
+    { label: "Indian Time", value: "Asia/Kolkata" },
+    { label: "American Time", value: "America/New_York" },
+    { label: "UTC Time", value: "UTC" },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date();
+      const options = {
+        timeZone: selectedTimeZone,
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      };
+      const formatter = new Intl.DateTimeFormat("en-US", options);
+      setCurrentTime(formatter.format(now));
+    }, 1000);
+
+    return () => clearInterval(timer); 
+  }, [selectedTimeZone]);
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-between gap-2 p-2 rounded-lg bg-white h-auto md:h-14 ml-2 md:ml-8">
@@ -41,25 +66,29 @@ export default function Navbar() {
         </div>
 
         {/* Timezone Dropdown - Center on small screens */}
-        <div className="w-full flex justify-center md:w-auto">
+        <div className="relative">
           <button
             className="h-10 px-4 border rounded-lg flex items-center gap-1"
             onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
-          >
-            TimeZone <SlArrowDown />
+          > 
+            {timeZones.find((tz) => tz.value === selectedTimeZone)?.label}{" "}
+            <SlArrowDown />
           </button>
           {isTimeZoneOpen && (
-            <div className="absolute z-10 mt-1 w-36 bg-white border rounded-lg shadow">
+            <div className="absolute right-0 z-10 mt-1 w-44 bg-white border rounded-lg shadow">
               <ul>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                  Indian TimeZone
-                </li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                  American TimeZone
-                </li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                  Other TimeZone
-                </li>
+                {timeZones.map((zone) => (
+                  <li
+                    key={zone.value}
+                    className="p-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => {
+                      setSelectedTimeZone(zone.value);
+                      setIsTimeZoneOpen(false);
+                    }}
+                  >
+                    {zone.label}
+                  </li>
+                ))}
               </ul>
             </div>
           )}
@@ -67,7 +96,7 @@ export default function Navbar() {
 
         {/* Current Time */}
         <span className="hidden md:flex h-10 px-4 text-red-500 border rounded-lg items-center">
-          ● 7:10 PM IST
+          ● {currentTime}
         </span>
       </div>
 
