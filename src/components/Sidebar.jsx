@@ -12,6 +12,12 @@ import {
   GoogleOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+} from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 import "../App.css";
 
@@ -169,6 +175,31 @@ const SideBar = () => {
             </div>
           </>
         )}
+
+        {/* Footer Section */}
+        <footer
+          className={`flex items-center justify-between py-4 bg-gray-50 border-gray-300 ${
+            collapsed ? "absolute bottom-0 w-full " : "relative "
+          }`}
+        >
+          <SignedIn>
+            <div className="flex items-center justify-between px-2">
+              <UserButton />
+              {!collapsed && (
+                <span className="flex items-end bottom-0  ml-2">Sign Out</span>
+              )}
+            </div>
+          </SignedIn>
+          <SignedOut>
+            <div className="flex items-center justify-between px-2">
+              <SignInButton>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                  {!collapsed ? "Sign In" : "Login"}
+                </button>
+              </SignInButton>
+            </div>
+          </SignedOut>
+        </footer>
       </div>
 
       {/* Content Area */}
