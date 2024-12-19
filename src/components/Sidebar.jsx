@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import {
   TeamOutlined,
@@ -13,11 +13,25 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import "../App.css"; 
 
 const SideBar = () => {
-  const [collapsed, setCollapsed] = useState(false); // State for collapsing/expanding the sidebar
+  const [collapsed, setCollapsed] = useState(false);
 
-  const toggleSidebar = () => setCollapsed(!collapsed); // Function to toggle the sidebar state
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setCollapsed(true);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const toggleSidebar = () => setCollapsed(!collapsed);
 
   return (
     <div className="flex">
@@ -25,7 +39,7 @@ const SideBar = () => {
       <div
         className={`fixed top-0 left-0 z-50 p-3 transition-all duration-300 min-h-screen shadow-md bg-gray-50 ${
           collapsed ? "w-16" : "w-64"
-        }`}
+        } h-full overflow-y-auto custom-scrollbar`}
         aria-label="Sidebar"
       >
         <div className="flex justify-between items-center mx-2 mb-2">
@@ -159,9 +173,7 @@ const SideBar = () => {
 
       {/* Content Area */}
       <div
-        className={`ml-${
-          collapsed ? "16" : "64"
-        } w-full transition-all duration-300`}
+        className={`ml-${collapsed ? "16" : "64"} w-full transition-all duration-300 overflow-y-auto custom-scrollbar`}
       >
         {/* Place your content here */}
       </div>
