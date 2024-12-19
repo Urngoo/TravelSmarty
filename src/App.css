@@ -3,4 +3,29 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+
+  /* Allows vertical scrolling */
+  overflow-y: auto;
+}
+
+#root::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar for webkit browsers */
+}
+
+body {
+  overflow: -moz-scrollbars-none;
+}
+
+/* Custom scrollbar class for elements */
+.custom-scrollbar {
+  overflow-y: scroll; /* Scrollable content */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for webkit-based browsers */
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none; /* Hide scrollbar Edge */
+  scrollbar-width: none;
 }
