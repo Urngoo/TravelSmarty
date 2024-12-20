@@ -9,7 +9,7 @@ export default function Navbar() {
   const [selectedDate, setSelectedDate] = useState(new Date()); // Calendar state
 
   return (
-    <div className="flex items-center justify-between py-2 bg-white rounded-lg mx-5">
+    <div className="flex items-center justify-between px-4 py-2 bg-white rounded-lg mx-8">
       {/* Left section */}
       <div className="flex items-center gap-3">
         {/* Today button */}
@@ -32,14 +32,14 @@ export default function Navbar() {
         </div>
 
         {/* Time Display */}
-        <span className="px-2 py-0.5 text-xs font-medium text-red-500 border rounded-full flex items-center justify-center leading-none">
+        <span className="px-3 py-1 text-xs font-medium text-red-500 border rounded-full flex items-center justify-center leading-none">
           ● 7:10 PM IST
         </span>
 
         {/* TimeZone dropdown */}
         <div className="relative">
           <button
-            className="px-2 py-0.5 text-xs font-medium border rounded-full flex items-center gap-1 leading-none"
+            className="px-3 py-1 text-xs font-medium border rounded-full flex items-center gap-1 leading-none"
             onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
           >
             <span>Indian TimeZone</span>
@@ -106,4 +106,3 @@ export default function Navbar() {
     </div>
   );
 }
-
