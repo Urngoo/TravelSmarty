@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PageLayout from "../PageLayout";
+import Navbar from "../components/Navbar";
 const WeatherCard = ({
   collapsed = false,
   city = "Ulaanbaatar", // gazraa songono
@@ -60,8 +61,9 @@ const WeatherCard = ({
 
   return (
     <PageLayout>
+      <Navbar />
       <div
-        className={`max-w-xs p-4 rounded-lg bg-white shadow-lg transition-all duration-300 ${
+        className={`max-w-xs p-4 rounded-lg bg-white shadow-lg transition-all duration-300 mt-5 ${
           collapsed ? "" : "ml-64"
         }`}
       >

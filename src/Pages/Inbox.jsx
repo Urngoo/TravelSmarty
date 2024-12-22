@@ -6,11 +6,7 @@ import WeatherCard from "../dashboard/WeatherCard";
 const Inbox = () => {
   return (
     <PageLayout>
-      <div>
-        <Navbar />
-        <WeatherCard />
-        Inbox
-      </div>
+      <div>Inbox</div>
     </PageLayout>
   );
 };

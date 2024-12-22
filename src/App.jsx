@@ -14,9 +14,10 @@ import Calendar from "./Pages/Cal";
 import Dashboard from "./Pages/Dashboard";
 import Inbox from "./Pages/Inbox";
 import Integration from "./Pages/Integration";
-import Map from "./Pages/Map";
+import Map from "./pages/Map";
 import Flight from "./components/flight";
 import SideBar from "./components/Sidebar";
+import WeatherCard from "./dashboard/WeatherCard";
 
 function ProtectedRoute({ children }) {
   const { isLoaded, isSignedIn } = useUser();
@@ -90,6 +91,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Flight />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/WeatherCard"
+                element={
+                  <ProtectedRoute>
+                    <WeatherCard />
                   </ProtectedRoute>
                 }
               />

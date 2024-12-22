@@ -18,6 +18,7 @@ import {
   UserButton,
   SignInButton,
 } from "@clerk/clerk-react";
+import WeatherCard from "../dashboard/WeatherCard"; // Ensure this path is correct
 import { Link } from "react-router-dom";
 import "../App.css";
 
@@ -131,6 +132,7 @@ const SideBar = () => {
                     className="flex flex-col items-center text-gray-500 border-gray-400 w-full py-10"
                   >
                     <CloudOutlined className="text-3xl text-gray-500 hover:text-blue-300" />
+                    {/* Weather Link */}
                     <Link
                       to="/WeatherCard"
                       className="text-black flex items-center px-2 py-1"
@@ -213,7 +215,7 @@ const SideBar = () => {
           collapsed ? "16" : "64"
         } w-full transition-all duration-300 overflow-y-auto custom-scrollbar`}
       >
-        {/* Place your content here */}
+        {/* Content goes here */}
       </div>
     </div>
   );
