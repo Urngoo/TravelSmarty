@@ -13,6 +13,7 @@
     "@ant-design/icons": "^5.5.1",
     "@clerk/nextjs": "^6.9.5",
     "@heroicons/react": "^2.2.0",
+    "@react-google-maps/api": "^2.20.3",
     "antd": "^5.22.3",
     "axios": "^1.7.9",
     "leaflet": "^1.9.4",
