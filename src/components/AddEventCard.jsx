@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { Switch, DatePicker } from "antd";
 import { SyncOutlined } from "@ant-design/icons";
-import { MdCancel } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
 import { BsPersonAdd } from "react-icons/bs";
 import { CiClock2, CiLocationOn } from "react-icons/ci";
 import { SlClock } from "react-icons/sl";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
-const AddCard = () => {
+const AddCard = ({ closeAddCard }) => {
   const [meetingHeading, setMeetingHeading] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [timezone, setTimezone] = useState("Indian Timezone");
@@ -34,19 +33,13 @@ const AddCard = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-3">
         <h2 className="text-lg font-semibold text-gray-700">Add new event</h2>
-        <button className="bg-white p-2 rounded-full focus:outline-none">
-          <svg
-            x="0px"
-            y="0px"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            className="fill-current text-gray-500"
-          >
-            <path d="M 12 2 C 6.4889971 2 2 6.4889971 2 12 C 2 17.511003 6.4889971 22 12 22 C 17.511003 22 22 17.511003 22 12 C 22 6.4889971 17.511003 2 12 2 z M 12 4 C 16.430123 4 20 7.5698774 20 12 C 20 16.430123 16.430123 20 12 20 C 7.5698774 20 4 16.430123 4 12 C 4 7.5698774 4 12 12 4 z M 8.7070312 7.2929688 L 7.2929688 8.7070312 L 10.585938 12 L 7.2929688 15.292969 L 8.7070312 16.707031 L 12 13.414062 L 15.292969 16.707031 L 16.707031 15.292969 L 13.414062 12 L 16.707031 8.7070312 L 15.292969 7.2929688 L 12 10.585938 L 8.7070312 7.2929688 z"></path>
-          </svg>
+        <button
+          onClick={closeAddCard}
+          className="bg-white p-2 rounded-full focus:outline-none"
+        >
+          <IoIosCloseCircleOutline />
         </button>
-      </div>
+      </div> 
 
       {/* Meeting Heading */}
       <input
@@ -154,7 +147,7 @@ const AddCard = () => {
           <div className="flex justify-between gap-2 text-xs">
             <div>
               <h2 className="flex justify-start">To</h2>
-              <select className="bg-white border rounded-lg text-xs outline-none cursor-pointer px-2 w-48 h-6 appearance-none">
+              <select className="bg-white border rounded-lg text-xs outline-none cursor-pointer px-2 w-44 h-6 appearance-none">
                 <option value="" disabled selected hidden>
                   Select Timezone
                 </option>
@@ -165,7 +158,7 @@ const AddCard = () => {
             </div>
             <div>
               <h2 className="flex justify-start">From</h2>
-              <select className="bg-white border rounded-lg text-xs outline-none cursor-pointer px-2 w-48 h-6 appearance-none">
+              <select className="bg-white border rounded-lg text-xs outline-none cursor-pointer px-2 w-44 h-6 appearance-none">
                 <option value="" disabled selected hidden>
                   Select Timezone
                 </option>
@@ -224,7 +217,7 @@ const AddCard = () => {
           {days.map((day, index) => (
             <button
               key={index}
-              className="w-5 h-5 border rounded-full flex items-center justify-center text-xs font-semibold text-gray-700"
+              className="w-12 h-5 border rounded-full flex items-center justify-center text-xs font-semibold text-gray-700"
             >
               {day}
             </button>

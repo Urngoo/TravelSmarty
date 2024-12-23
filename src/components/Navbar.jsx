@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import { SlArrowLeft, SlArrowRight, SlArrowDown } from "react-icons/sl";
 import "react-datepicker/dist/react-datepicker.css";
+import AddCard from "./AddEventCard";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 export default function Navbar() {
   const [isWeekOpen, setIsWeekOpen] = useState(false); // Toggle for "This week" dropdown
   const [isTimeZoneOpen, setIsTimeZoneOpen] = useState(false); // Toggle for "TimeZone" dropdown
   const [selectedDate, setSelectedDate] = useState(new Date()); // Calendar state
+  const [showAddCard, setShowAddCard] = useState(false);
+
+  const closeAddCard = () => setShowAddCard(false);
 
   return (
     <div className="flex items-center justify-between px-4 py-2 bg-white rounded-lg mx-8">
@@ -99,10 +104,21 @@ export default function Navbar() {
         </div>
 
         {/* Add event button */}
-        <button className="px-4 py-1 text-xs font-medium text-white bg-purple-600 rounded-full flex items-center">
-          + Add event
+        <button 
+          onClick={() => setShowAddCard(true)}
+          className="px-4 py-1 text-xs font-medium text-white bg-purple-500 rounded-full"
+        >
+          Add Event
         </button>
       </div>
+
+      {showAddCard && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="relative bg-white rounded-lg shadow-lg w-full sm:w-auto max-w-md">
+            <AddCard closeAddCard={closeAddCard} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
