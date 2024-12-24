@@ -32,7 +32,8 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
-function App() {
+// Create a separate component for the app content
+function AppContent() {
   const { user } = useUser();
   const [collapsed, setCollapsed] = useState(false);
 
@@ -98,6 +99,21 @@ function App() {
         </div>
       </div>
     </BrowserRouter>
+  );
+}
+
+// Main App component
+function App() {
+  const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
+  if (!clerkPubKey) {
+    return <div>Missing Publishable Key</div>;
+  }
+
+  return (
+    <ClerkProvider publishableKey={clerkPubKey}>
+      <AppContent />
+    </ClerkProvider>
   );
 }
 

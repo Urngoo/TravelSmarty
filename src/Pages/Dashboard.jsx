@@ -5,6 +5,7 @@ import Event from "../components/event";
 import Flight from "../components/flight";
 import CardForEvent from "../components/card";
 import BrainStormCard from "../components/BrainStormCard";
+import MeetingCard from "../components/MeetingProposalCard";
 
 function Dashboard() {
   return (
@@ -43,6 +44,16 @@ function Dashboard() {
             <div>
               <Flight />
             </div>
+          </div>
+        </div>
+
+        {/* Meeting proposals */}
+        <div className="flex flex-col p-6 rounded-lg">
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="font-bold text-lg">Meeting Proposals</h1>
+          </div>
+          <div >
+            <MeetingCard />
           </div>
         </div>
       </PageLayout>
