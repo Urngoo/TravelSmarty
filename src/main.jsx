@@ -1,10 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { ClerkProvider } from "@clerk/clerk-react";
 import "./index.css";
+import App from "./App.jsx";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const clerk_key = import.meta.env.VITE_CLERK_KEY;
+
+if (!clerk_key) {
+  throw new Error("Clerk publishable key is missing");
+}
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <ClerkProvider publishableKey={clerk_key}>
+      <App />
+    </ClerkProvider>
+  </StrictMode>
 );
