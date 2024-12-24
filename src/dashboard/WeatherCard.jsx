@@ -1,13 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const WeatherCard = ({
   collapsed = false,
-  temperature = 0,
-  weatherCondition = "Unknown",
-  icon = null,
-  highTemp,
-  lowTemp,
+  city = "Ulaanbaatar", // default city
 }) => {
+  const [weatherData, setWeatherData] = useState({
+    temperature: 0,
+    weatherCondition: "Unknown",
+    icon: null,
+    highTemp: 0,
+    lowTemp: 0,
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_API_KEY&units=metric`
+        );
+        const data = response.data;
+        setWeatherData({
+          temperature: data.main.temp,
+          weatherCondition: data.weather[0].description,
+          icon: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
+          highTemp: data.main.temp_max,
+          lowTemp: data.main.temp_min,
+        });
+      } catch (err) {
+        setError("Failed to fetch weather data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWeatherData();
+  }, [city]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div
       className={`max-w-xs p-4 rounded-lg bg-white shadow-lg transition-all duration-300 ${
@@ -16,8 +56,12 @@ const WeatherCard = ({
     >
       {/* Weather Icon */}
       <div className="flex justify-center mb-4">
-        {icon ? (
-          <img src={icon} alt="weather-icon" className="h-12 w-12" />
+        {weatherData.icon ? (
+          <img
+            src={weatherData.icon}
+            alt="weather-icon"
+            className="h-12 w-12"
+          />
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,15 +76,15 @@ const WeatherCard = ({
 
       {/* Weather Information */}
       <div className="text-center mb-2">
-        <h2 className="text-4xl font-bold text-gray-800">{temperature}°</h2>
-        <p className="text-lg text-gray-600">{weatherCondition}</p>
+        <h2 className="text-4xl font-bold text-gray-800">{weatherData.temperature}°</h2>
+        <p className="text-lg text-gray-600">{weatherData.weatherCondition}</p>
       </div>
 
       {/* Temperatures */}
       <div className="flex justify-between items-center text-xl font-semibold">
-        <span className="text-red-600">{highTemp}°</span>
+        <span className="text-red-600">{weatherData.highTemp}°</span>
         <span className="text-gray-400">|</span>
-        <span className="text-blue-600">{lowTemp}°</span>
+        <span className="text-blue-600">{weatherData.lowTemp}°</span>
       </div>
     </div>
   );
