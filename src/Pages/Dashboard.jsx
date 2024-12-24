@@ -6,6 +6,7 @@ import Flight from "../components/flight";
 import CardForEvent from "../components/card";
 import BrainStormCard from "../components/BrainStormCard";
 import MeetingCard from "../components/MeetingProposalCard";
+import AddCard from "../components/AddEventCard";
 
 function Dashboard() {
   return (

@@ -14,9 +14,10 @@ import Calendar from "./Pages/Cal";
 import Dashboard from "./Pages/Dashboard";
 import Inbox from "./Pages/Inbox";
 import Integration from "./Pages/Integration";
-import Map from "./Pages/Map";
+import Map from "./pages/Map";
 import Flight from "./components/flight";
 import SideBar from "./components/Sidebar";
+import WeatherCard from "./dashboard/WeatherCard";
 
 function ProtectedRoute({ children }) {
   const { isLoaded, isSignedIn } = useUser();
@@ -32,8 +33,7 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
-// Create a separate component for the app content
-function AppContent() {
+function App() {
   const { user } = useUser();
   const [collapsed, setCollapsed] = useState(false);
 
@@ -94,26 +94,19 @@ function AppContent() {
                   </ProtectedRoute>
                 }
               />
+              <Route
+                path="/WeatherCard"
+                element={
+                  <ProtectedRoute>
+                    <WeatherCard />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </div>
         </div>
       </div>
     </BrowserRouter>
-  );
-}
-
-// Main App component
-function App() {
-  const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
-  if (!clerkPubKey) {
-    return <div>Missing Publishable Key</div>;
-  }
-
-  return (
-    <ClerkProvider publishableKey={clerkPubKey}>
-      <AppContent />
-    </ClerkProvider>
   );
 }
 
