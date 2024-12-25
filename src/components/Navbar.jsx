@@ -1,119 +1,87 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 import { SlArrowLeft, SlArrowRight, SlArrowDown } from "react-icons/sl";
+import "react-datepicker/dist/react-datepicker.css";
+import AddCard from "./AddEventCard";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 export default function Navbar() {
-  const [isDateOpen, setIsDateOpen] = useState(false); // Toggle for "July 17" dropdown
   const [isWeekOpen, setIsWeekOpen] = useState(false); // Toggle for "This week" dropdown
   const [isTimeZoneOpen, setIsTimeZoneOpen] = useState(false); // Toggle for "TimeZone" dropdown
-  const [selectedTimeZone, setSelectedTimeZone] = useState("Asia/Ulaanbaatar"); // Default to Mongolian Time Zone
-  const [currentTime, setCurrentTime] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date()); // Calendar state
+  const [showAddCard, setShowAddCard] = useState(false);
 
-  const timeZones = [
-    { label: "Mongolian Time", value: "Asia/Ulaanbaatar" },
-    { label: "Indian Time", value: "Asia/Kolkata" },
-    { label: "American Time", value: "America/New_York" },
-    { label: "UTC Time", value: "UTC" },
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      const options = {
-        timeZone: selectedTimeZone,
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      };
-      const formatter = new Intl.DateTimeFormat("en-US", options);
-      setCurrentTime(formatter.format(now));
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [selectedTimeZone]);
+  const closeAddCard = () => setShowAddCard(false);
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between gap-2 p-2 rounded-lg bg-white h-auto md:h-14 ml-2 md:ml-8">
+    <div className="flex items-center justify-between px-4 py-2 bg-white rounded-lg mx-8">
       {/* Left section */}
-      <div className="flex flex-wrap items-center gap-3 justify-center md:justify-start w-full md:w-auto">
-        {/* Today Button */}
-        <button className="h-10 px-4 border rounded-lg flex items-center">
+      <div className="flex items-center gap-3">
+        {/* Today button */}
+        <button className="px-3 py-1 border rounded-full flex items-center text-sm">
           Today
         </button>
 
-        {/* Date dropdown */}
+        {/* Date calendar */}
         <div className="relative">
-          <button
-            className="h-10 px-4 border rounded-lg flex items-center gap-1"
-            onClick={() => setIsDateOpen(!isDateOpen)}
-          >
-            July 17 <SlArrowDown />
-          </button>
-          {isDateOpen && (
-            <div className="absolute left-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow">
-              <ul>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                  July 16
-                </li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                  July 17
-                </li>
-                <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                  July 18
-                </li>
-              </ul>
-            </div>
-          )}
+          <div className="px-3 py-1 border rounded-full flex items-center gap-1 text-sm cursor-pointer">
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              dateFormat="MMMM d"
+              className="w-full bg-transparent focus:outline-none"
+              popperPlacement="bottom-start"
+            />
+            <SlArrowDown className="w-3 h-3" />
+          </div>
         </div>
 
-        {/* Timezone Dropdown - Center on small screens */}
+        {/* Time Display */}
+        <span className="px-3 py-1 text-xs font-medium text-red-500 border rounded-full flex items-center justify-center leading-none">
+          ● 7:10 PM IST
+        </span>
+
+        {/* TimeZone dropdown */}
         <div className="relative">
           <button
-            className="h-10 px-4 border rounded-lg flex items-center gap-1"
+            className="px-3 py-1 text-xs font-medium border rounded-full flex items-center gap-1 leading-none"
             onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
           >
-            {timeZones.find((tz) => tz.value === selectedTimeZone)?.label}{" "}
-            <SlArrowDown />
+            <span>Indian TimeZone</span>
+            <SlArrowDown className="w-3 h-3" />
           </button>
+
           {isTimeZoneOpen && (
-            <div className="absolute right-0 z-10 mt-1 w-44 bg-white border rounded-lg shadow">
+            <div className="absolute left-0 z-10 mt-1 w-36 bg-white border rounded-lg shadow-md">
               <ul>
-                {timeZones.map((zone) => (
-                  <li
-                    key={zone.value}
-                    className="p-2 hover:bg-gray-100 cursor-pointer"
-                    onClick={() => {
-                      setSelectedTimeZone(zone.value);
-                      setIsTimeZoneOpen(false);
-                    }}
-                  >
-                    {zone.label}
-                  </li>
-                ))}
+                <li className="p-2 text-sm hover:bg-gray-100 cursor-pointer">
+                  Indian TimeZone
+                </li>
+                <li className="p-2 text-sm hover:bg-gray-100 cursor-pointer">
+                  American TimeZone
+                </li>
+                <li className="p-2 text-sm hover:bg-gray-100 cursor-pointer">
+                  Other TimeZone
+                </li>
               </ul>
             </div>
           )}
         </div>
-
-        {/* Current Time */}
-        <span className="hidden md:flex h-10 px-4 text-red-500 border rounded-lg items-center">
-          ● {currentTime}
-        </span>
       </div>
 
       {/* Right section */}
-      <div className="flex flex-wrap items-center gap-3 justify-center md:justify-start w-full md:w-auto">
-        {/* Left/Right Arrows */}
-        <button className="h-10 p-2 border rounded-lg flex items-center">
+      <div className="flex items-center gap-3">
+        <button className="w-8 h-8 p-1 border rounded-full flex items-center justify-center">
           <SlArrowLeft />
         </button>
-        <button className="h-10 p-2 border rounded-lg flex items-center">
+        <button className="w-8 h-8 p-1 border rounded-full flex items-center justify-center">
           <SlArrowRight />
         </button>
 
         {/* Week dropdown */}
         <div className="relative">
           <button
-            className="h-10 px-4 border rounded-lg flex items-center gap-1"
+            className="px-3 py-1 border rounded-full flex items-center gap-1 text-sm"
             onClick={() => setIsWeekOpen(!isWeekOpen)}
           >
             This week <SlArrowDown className="w-3 h-3" />
@@ -135,12 +103,22 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Add Event Button */}
-        <button className="h-10 px-4 text-white bg-blue-500 rounded-lg flex items-center justify-center md:w-auto">
-          <span className="hidden md:inline">+ Add event</span>
-          <span className="md:hidden">+</span>
+        {/* Add event button */}
+        <button
+          onClick={() => setShowAddCard(true)}
+          className="px-4 py-1 text-xs font-medium text-white bg-purple-500 rounded-full"
+        >
+          Add Event
         </button>
       </div>
+
+      {showAddCard && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="relative bg-white rounded-lg shadow-lg w-full sm:w-auto max-w-md">
+            <AddCard closeAddCard={closeAddCard} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
