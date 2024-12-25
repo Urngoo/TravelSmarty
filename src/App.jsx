@@ -1,26 +1,36 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Calendar from "./Pages/Calendar";
+import Calendar from "./Pages/Cal";
 import Dashboard from "./Pages/Dashboard";
 import Inbox from "./Pages/Inbox";
 import Integration from "./Pages/Integration";
 import Map from "./Pages/Map";
-import AddEvent from "./component/event";
-import SideBar from "./dashboard/Sidebar";
-import Flight from "./component/flight";
-
-
+import Flight from "./components/flight";
+import SideBar from "./components/Sidebar";
+import WeatherCard from "./dashboard/WeatherCard";
 
 function App() {
-  const [count, setCount] = useState(0); //test hiiv
-
   return (
-    <>
-      <CardComponent />
-      <ToggleSwitch />
-      <SideBar/>
-    </>
+    <BrowserRouter>
+      <div className="flex">
+        <SideBar />
+        <div className={`flex flex-col transition-all duration-300 w-full`}>
+          {/* Main content */}
+          <div className="flex-grow p-4">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/integration" element={<Integration />} />
+              <Route path="/inbox" element={<Inbox />} />
+              <Route path="/map" element={<Map />} />
+              <Route path="/flight" element={<Flight />} />
+              <Route path="/WeatherCard" element={<WeatherCard />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
