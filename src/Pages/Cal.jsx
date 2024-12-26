@@ -25,6 +25,15 @@ const initialMeetingData = {
     { id: "3", text: "Meeting 3", status: "yellow" },
     { id: "4", text: "Meeting 4", status: "blue" },
   ],
+  "2024-12-18": [
+    { id: "5", text: "Meeting 5", status: "red" },
+    { id: "6", text: "Meeting 6", status: "yellow" },
+  ],
+  "2024-12-25": [
+    { id: "7", text: "Meeting 7", status: "blue" },
+    { id: "8", text: "Meeting 8", status: "green" },
+  ],
+  "2024-12-19": [{ id: "9", text: "Meeting 9", status: "yellow" }],
 };
 
 const statusColors = {

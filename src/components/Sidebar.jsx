@@ -15,6 +15,7 @@ import {
 import WeatherCard from "../dashboard/WeatherCard"; // Ensure this path is correct
 import { Link } from "react-router-dom";
 import "../App.css";
+import Wether from "../Pages/Wether";
 
 const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -129,6 +130,7 @@ const SideBar = () => {
                     {/* Weather Link */}
                     <Link
                       to="/WeatherCard"
+                      onClick={() => navigate("/Wether")}
                       className="text-black flex items-center px-2 py-1"
                     >
                       {!collapsed && <span className="ml-2">Weather</span>}
